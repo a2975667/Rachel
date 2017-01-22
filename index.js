@@ -7,8 +7,8 @@ var connector = new builder.ChatConnector();
 var bot = new builder.UniversalBot(connector)
 
 
-var APP_ID = '207badd4-557c-44fe-8e5d-cc2e7f1220d3';
-var SUB_KEY = '4cadea2300cc4a65a54edb454e670f4c';
+var APP_ID = 'b42b9e31-44a9-4deb-8bb5-9dd3d2b84898';
+var SUB_KEY = '77f07e1255ed4d0592bb2157cd5d1621';
 //const LuisModelUrl = 'https://api.projectoxford.ai/luis/v1/application?id=' + APP_ID + '&subscription-key=' + SUB_KEY ;
 const LuisModelUrl = 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/' + APP_ID + '?subscription-key=' + SUB_KEY + '&verbose=true';
 var recognizer = new builder.LuisRecognizer(LuisModelUrl);
@@ -220,22 +220,18 @@ bot.dialog('/choice', [
             if (results.response.index === 2) {
                 session.beginDialog('/attentionEvent', temp);
             }else if(results.response.index == 3) {
-            client.getMaster('5566',function(results){
+               client.getMaster('5566', function(error, res, body){
+                var reminder = JSON.parse(body).reminder;
+                console.log(reminder);
                 var str = '';
-                for(var todo of results.reminder) {
-                    str += todo + '\n';
+                for(var todo of reminder) {
+                    str += todo.info + '\n\n';
                 }
                 session.send(str);
             });
         }
-        if (temp) {
-            next();
-        }
-    }},
-    function (session, results, next) {
-
-        console.log(results);
-    }
+        session.endDialog();
+    }}
 ]);
 
 
@@ -245,7 +241,7 @@ dialog.onDefault(function (session, args, next) {
 });
 
 var server = restify.createServer();
-server.listen(process.env.port || process.env.PORT || 3978, function () {
+server.listen(3978, function () {
     console.log("%s listening to %s", server.name, server.url);
 });
 
