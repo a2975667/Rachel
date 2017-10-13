@@ -11,3 +11,7 @@ Rachel is built running two servers: Back-end and Front-end.
 - Back-server : Express.js + MongoDB on Azure
 - Front-end : MS bot framework + Luis + Node.js
 
+Current build is able to identify diseases and reflect user when certain personnel is mentioned. Weak in identifying calendar events and to-do list.
+
+
+
