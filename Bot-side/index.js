@@ -241,7 +241,7 @@ dialog.onDefault(function (session, args, next) {
 });
 
 var server = restify.createServer();
-server.listen(3978, function () {
+server.listen(process.env.port || process.env.PORT || 3978, function () {
     console.log("%s listening to %s", server.name, server.url);
 });
 
