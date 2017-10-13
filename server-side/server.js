@@ -13,8 +13,7 @@ var app = express();
 var port = process.env.PORT || 15000;
 var router = express.Router();
 
-//mongoose.connect('mongodb://ken:123123@ds056009.mlab.com:56009/rachel');
-mongoose.connect('mongodb://localhost:27017/rachel');
+mongoose.connect('RACHEL.DATABASE');
 
 app.use(bodyParser.urlencoded({
   extended: true
