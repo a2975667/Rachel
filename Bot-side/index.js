@@ -7,8 +7,8 @@ var connector = new builder.ChatConnector();
 var bot = new builder.UniversalBot(connector)
 
 
-var APP_ID = 'b42b9e31-44a9-4deb-8bb5-9dd3d2b84898';
-var SUB_KEY = '77f07e1255ed4d0592bb2157cd5d1621';
+var APP_ID = 'KEY';
+var SUB_KEY = 'KEY';
 //const LuisModelUrl = 'https://api.projectoxford.ai/luis/v1/application?id=' + APP_ID + '&subscription-key=' + SUB_KEY ;
 const LuisModelUrl = 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/' + APP_ID + '?subscription-key=' + SUB_KEY + '&verbose=true';
 var recognizer = new builder.LuisRecognizer(LuisModelUrl);
